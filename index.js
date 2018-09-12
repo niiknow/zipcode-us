@@ -1,18 +1,19 @@
-const ApiBuilder = require('claudia-api-builder');
+import API from 'claudia-api-builder'
 
-const api = new ApiBuilder();
+const api = new API()
 
-module.exports = api;
-
-// query operation
-api.get('/{zipcode}', request => {
-  const qs = request.queryString || {};
-  let rst = request.pathParams.zipcode;
-  rst = require(`./db/${rst.substr(0, 2)}/${rst}.json`);
+function handler(request) {
+  const qs = request.queryString || {}
+  let rst = request.pathParams.zipcode
+  rst = require(`./db/${rst.substr(0, 2)}/${rst}.json`)
 
   if (qs.callback) {
-    rst = `${qs.callback}(${JSON.stringify(rst)});`;
+    rst = `${qs.callback}(${JSON.stringify(rst)});`
   }
 
-  return rst;
-});
+  return rst
+}
+
+api.get('/', handler)
+
+module.exports = api

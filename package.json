@@ -1,28 +1,23 @@
 {
   "name": "zipcode-us",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lambda function for zipcode-us",
   "scripts": {
-    "test": "xo && nyc ava",
-    "start": "claudia create --name aztable --region us-east-1 --api-module index",
+    "start": "claudia create --name zipcodeus --region us-east-1 --api-module index",
     "update": "claudia update"
   },
   "author": "noogen <friends@niiknow.org>",
   "dependencies": {
-    "claudia-api-builder": "^2.5.1"
+    "claudia-api-builder": "^4.1.1"
   },
   "optionalDependencies": {
     "aws-sdk": "^2.96.0"
   },
   "devDependencies": {
-    "ava": "^0.20.0",
-    "claudia": "^2.14.2",
-    "nyc": "^11.0.0",
-    "sinon": "^4.2.2",
-    "xo": "^0.18.2"
+    "claudia": "^5.1.1"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=8"
   },
   "files": [
     "index.js"
@@ -31,7 +26,7 @@
     ""
   ],
   "xo": {
-    "semicolon": true,
+    "semicolon": false,
     "prefer-const": false,
     "ignore": [
       "node_modules",
